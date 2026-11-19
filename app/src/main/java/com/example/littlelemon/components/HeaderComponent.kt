@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
@@ -31,22 +32,27 @@ fun HeaderComponent(
         contentAlignment = Alignment.Center
     ) {
         Image(
-            painter = painterResource(id = R.drawable.logo), // Tu recurso
+            painter = painterResource(id = R.drawable.logo),
             contentDescription = "Logo de Little Lemon",
             modifier = Modifier
                 .align(Alignment.Center)
-                .height(50.dp) // Controla la altura sin deformar el ancho
-                .fillMaxWidth(0.6f), // Ocupa el 60% del ancho de la pantalla
-            contentScale = ContentScale.Fit // Evita que la imagen se recorte o estire mal
+                .height(40.dp)
+                .fillMaxWidth(0.6f),
+            contentScale = ContentScale.Fit
         )
         if(showBtnProfile && navController != null)
         IconButton(
             onClick = {
                 navController.navigate(Profile.route)
             },
-            modifier = Modifier.align(Alignment.CenterEnd)
+            modifier = Modifier.align(Alignment.CenterEnd),
+
         ) {
-            Icon(painter = painterResource(id= R.drawable.ic_profile), contentDescription = "Icon profile")
+            Icon(
+                painter = painterResource(id= R.drawable.ic_profile),
+                contentDescription = "Icon profile",
+                modifier = Modifier.size(26.dp),
+                )
         }
     }
 }

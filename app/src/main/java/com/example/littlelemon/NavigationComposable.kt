@@ -9,7 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun MyNavigation(){
+fun MyNavigation(database: MenuDatabase){
     val navController = rememberNavController()
 
     val context = LocalContext.current
@@ -33,7 +33,7 @@ fun MyNavigation(){
 
     NavHost(navController = navController, startDestination =  if(hayDatos ) Home.route else Onboarding.route){
         composable(Home.route){
-            HomeScreen(navController)
+            HomeScreen(navController,database)
         }
         composable(Profile.route){
             ProfileScreen(navController)

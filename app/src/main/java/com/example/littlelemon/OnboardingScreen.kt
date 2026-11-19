@@ -35,6 +35,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.edit
 import androidx.navigation.NavHostController
+import com.example.littlelemon.components.ContainerGreenComponent
 import com.example.littlelemon.components.HeaderComponent
 
 @Composable
@@ -42,6 +43,9 @@ fun OnboardingScreen(navController: NavHostController) {
     var email by remember { mutableStateOf<String>("") }
     var name by remember { mutableStateOf<String>("") }
     var lastName by remember { mutableStateOf<String>("") }
+
+    val esValido = android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    val hayError = email.isNotEmpty() && !esValido
 
     val context = LocalContext.current
     Column(
@@ -51,13 +55,7 @@ fun OnboardingScreen(navController: NavHostController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         HeaderComponent()
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(Color(0xFF495E57)) // Verde oscuro de la marca
-                .padding(vertical = 36.dp, horizontal = 16.dp),
-            contentAlignment = Alignment.Center
-        ) {
+        ContainerGreenComponent() {
             Text(
                 text = "Let's get to know you",
                 color = Color.White,
@@ -65,6 +63,7 @@ fun OnboardingScreen(navController: NavHostController) {
                 fontWeight = FontWeight.Medium
             )
         }
+
         OutlinedTextField(
             value = name,
             onValueChange = { name = it},
@@ -84,7 +83,11 @@ fun OnboardingScreen(navController: NavHostController) {
         OutlinedTextField(
             value = email,
             onValueChange = { email = it},
+            isError = hayError,
             singleLine = true,
+            supportingText = {
+                if (hayError) Text("Invalid email")
+            },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Email,
                 imeAction = ImeAction.Next
