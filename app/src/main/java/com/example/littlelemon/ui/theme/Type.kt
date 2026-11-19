@@ -2,11 +2,20 @@ package com.example.littlelemon.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.littlelemon.R
 
 // Set of Material typography styles to start with
+val markaziFontFamily = FontFamily(
+    Font(R.font.markazitextregular),
+)
+
+val karlaFontFamily = FontFamily(
+    Font(R.font.karlaregular)
+)
 val Typography = Typography(
     bodyLarge = TextStyle(
         fontFamily = FontFamily.Default,
@@ -14,16 +23,37 @@ val Typography = Typography(
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
-    )
-    /* Other default text styles to override
-    titleLarge = TextStyle(
-        fontFamily = FontFamily.Default,
+    ),
+    bodyMedium = TextStyle(
+        fontFamily = karlaFontFamily,
         fontWeight = FontWeight.Normal,
-        fontSize = 22.sp,
+        fontSize = 14.sp,
+        lineHeight = 18.sp,
+        letterSpacing = 0.5.sp
+    ),
+    bodySmall = TextStyle(
+        fontFamily = karlaFontFamily,
+        fontWeight = FontWeight.Normal,
+        fontSize = 12.sp,
+        lineHeight = 16.sp,
+        letterSpacing = 0.5.sp
+    ),
+        //Other default text styles to override
+    titleLarge = TextStyle(
+        fontFamily = markaziFontFamily,
+        fontWeight = FontWeight.Bold,
+        fontSize = 42.sp,
         lineHeight = 28.sp,
         letterSpacing = 0.sp
     ),
-    labelSmall = TextStyle(
+    titleSmall = TextStyle(
+        fontFamily = markaziFontFamily,
+        fontWeight = FontWeight.Normal,
+        fontSize = 28.sp,
+        lineHeight = 14.sp,
+        letterSpacing = 0.sp
+    ),
+    /*labelSmall = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Medium,
         fontSize = 11.sp,
