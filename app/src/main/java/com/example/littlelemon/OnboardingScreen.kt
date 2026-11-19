@@ -101,8 +101,8 @@ fun OnboardingScreen(navController: NavHostController) {
 
         Button (
             onClick = {
-                if(name.isBlank() || lastName.isBlank() || email.isBlank()){
-                    Toast.makeText(context,"register fail, please fill all values.", Toast.LENGTH_LONG).show()
+                if(name.isBlank() || lastName.isBlank() || email.isBlank() || hayError){
+                    Toast.makeText(context,"register fail, please fill correct all values.", Toast.LENGTH_LONG).show()
                 }
                 else{
 
